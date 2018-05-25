@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import request from 'request';
 
 function Square(props) {
   return (
@@ -54,7 +55,7 @@ class Game extends React.Component {
       ],
       stepNumber: 0,
       xIsNext: true,
-      message: null
+      message: 'before'
     };
   }
 
@@ -77,15 +78,46 @@ class Game extends React.Component {
     });
   }
 
-  getDataFromApi() {
+  changeData(){
+      this.setState({
+          message: 'test'
+      });
+  }
+
+  getDataFromApi(st) {
         // APIをコール
-        axios.get('https://o82bv3fur1.execute-api.ap-northeast-1.amazonaws.com/hayashi_staging')
-            .then((response) => {
-                // APIから取得したデータをstateに保存
-                this.setState({
-                    message: response.message
-                });
+        //  axios.get('https://o82bv3fur1.execute-api.ap-northeast-1.amazonaws.com/hayashi_staging')
+        var options = {
+            url:'https://o82bv3fur1.execute-api.ap-northeast-1.amazonaws.com/hayashi_staging/hayashi-test',
+            method: 'POST',
+            headers: {
+                'Access-Control-Allow-Origin': '*', 
+                'Content-Type':'application/json'
+            },
+            json: true,
+            form: {'Access-Control-Allow-Origin': '*', "hoge":"fuga"}
+        }
+        this.setState({
+            message: st
+        })
+        console.log("test");
+
+        var tmp = 'tn';
+        var that = this;
+        request.post(options, function(error, response, body){
+            var tmp = 'adf';
+            if (!error && response.statusCode==200 ){
+                tmp = body.message;
+            }
+            tmp = error;
+            this.setState({
+                message: tmp
             });
+        }.bind(this));
+
+        //this.setState({
+        //    message: tmp
+        //})
   }
 
   jumpTo(step) {
@@ -107,7 +139,7 @@ class Game extends React.Component {
       return (
         <li key={move}>
           <button onClick={() => this.jumpTo(move)}>{desc}</button>
-          <button onClick={() => this.getDataFromApi()}>getAPI</button>
+          <button onClick={() => this.getDataFromApi('api')}>getAPI</button>
         </li>
       );
     });
@@ -117,7 +149,7 @@ class Game extends React.Component {
       status = "Winner: " + winner;
       mes = this.state.message;
     } else {
-      status = "Next player: " + (this.state.xIsNext ? "X" : "O");
+      status = "Next player: " + (this.state.xIsNext ? this.state.message : "O");
     }
 
     return (
