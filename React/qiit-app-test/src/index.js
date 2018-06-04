@@ -24,7 +24,7 @@ class TimeLine extends React.Component {
       <div className="timeline">
         <div style={style.container}>メニューバー</div>
         <td align="center">
-          align="center"を指定すると中央寄せです。
+          align="center"を指定すると中央寄せです。テスト
           </td>
           <div className="line">
             game-bord
