@@ -39,9 +39,13 @@ class App extends Component {
       .get(url)
       .query({})
       .end(function(err, res){
-        console.log(JSON.parse(res.text)[0]['id'])
-        const tag = JSON.parse(res.text)[0]['id']
-        this.props.dispatch(getUserTags(tag))
+        const content = JSON.parse(res.text)
+        for(var i in content) {
+            console.log(content[i]['id'])
+            const tag = content[i]['id']
+            this.props.dispatch(getUserTags(tag))
+        }
+        console.log(this.props.state)
       }.bind(this));
   }
 }
