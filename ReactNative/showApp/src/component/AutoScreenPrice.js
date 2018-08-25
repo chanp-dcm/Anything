@@ -17,14 +17,14 @@ const styles = StyleSheet.create({
   }
 })
 
-export default class HttpScreen extends React.Component {
+export default class AutoScreen extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
     const {
-      onPress,
+      onPress
     } = this.props;
 
     return (
@@ -33,7 +33,13 @@ export default class HttpScreen extends React.Component {
           onPress={onPress}
           style={styles.textShow}
         >
-          取得
+          ON
+        </GetButton>
+        <GetButton
+          onPress={this.getFxPrice}
+          style={styles.textShow}
+        >
+          OFF
         </GetButton>
       </View>
     )

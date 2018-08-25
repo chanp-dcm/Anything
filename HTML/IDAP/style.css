@@ -1,0 +1,68 @@
+body {
+	margin: 0px;
+	padding: 0px;
+	color: #333;	/*全体の文字色*/
+	font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;	/*フォント種類*/
+	font-size: 15px;	/*文字サイズ*/
+	line-height: 2;		/*行間*/
+	background: #333333;	/*背景色*/
+	-webkit-text-size-adjust: none;
+  background-image: url('./datacenter.png');
+  background-repeat:no-repeat;
+	background-position: 50% 20%;
+  background-size: 100% 70%;
+  back
+}
+h1,h2,h3,h4,h5,p,ul,ol,li,dl,dt,dd,form,figure,form {margin: 0px;padding: 0px;font-size: 100%;}
+ul {list-style-type: none;}
+ol {padding-left: 40px;padding-bottom: 15px;}
+
+header {
+  padding: 10px 0px;
+  background: rgba(0,0,0,0.8);
+  width: 100%;
+  text-align: center;
+  position: sticky; /* 要素を固定/解除する */
+  top: 0; /* 縦方向の閾値 */
+  left: 0; /* 横方向の閾値 */
+}
+
+header.menubar {
+	font-size: 20px;
+  text-align: center;
+}
+
+header.menubar li {
+  color: #FFF;
+  opacity: 1.0;
+  display: inline;
+	line-height: 1.5;
+}
+
+.space {
+  color: #FFF;
+  font-size: 20px;
+  vertical-align: middle;
+  padding: 0px 20px;
+  background: rgba(0,0,0,1);
+  height: 70px;
+  line-height:70px;
+}
+
+.main-message {
+  color: #FFF;
+  padding: 60px 0px;
+  font-size: 60px;
+  background: rgba(0,0,0,0.7);
+  height: 680px;
+  text-align: center;
+}
+
+.describe {
+  color: #FFF;
+  font-size: 30px;
+}
+
+span.impact {
+  color: #40E0D0;
+}
